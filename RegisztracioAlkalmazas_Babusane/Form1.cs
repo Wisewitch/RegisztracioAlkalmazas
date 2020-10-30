@@ -29,7 +29,7 @@ namespace RegisztracioAlkalmazas_Babusane
         private void button_Add_Click(object sender, EventArgs e)
         {
             string hobbi = textBox_Ujhobbi.Text.Trim();
-           
+
 
             if (listBox_Hobbi.Items.Contains(hobbi))
             {
@@ -37,11 +37,12 @@ namespace RegisztracioAlkalmazas_Babusane
 
             }
             else
-            {               
+            {
+                
                 listBox_Hobbi.Items.Add(hobbi);
             }
 
-         }
+        }
 
 
         private void button_Mentes_Click(object sender, EventArgs e)
