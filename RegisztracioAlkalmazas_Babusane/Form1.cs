@@ -11,7 +11,7 @@ using System.IO;
 
 namespace RegisztracioAlkalmazas_Babusane
 {
-    
+
     public partial class Form1 : Form
     {
         public Form1()
@@ -24,12 +24,20 @@ namespace RegisztracioAlkalmazas_Babusane
         }
 
         static List<Regadatok> regadatok = new List<Regadatok>();
+        static int adatsor = -1;
 
 
         private void button_Add_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrWhiteSpace(textBox_Ujhobbi.Text.Trim()))
+            {
+                MessageBox.Show("A Hobbi mező kitöltése kötelező.", "Adatbeviteli hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox_Ujhobbi.Focus();
+                return;
+            } 
+
             string hobbi = textBox_Ujhobbi.Text.Trim();
-            //Regadatok hobbi = new Regadatok(hobbi);
+            
 
             if (listBox_Hobbi.Items.Contains(hobbi))
             {
@@ -38,7 +46,7 @@ namespace RegisztracioAlkalmazas_Babusane
             }
             else
             {
-                MessageBox.Show("Element added");
+                MessageBox.Show("Új elem hozzáadva");
                 listBox_Hobbi.Items.Add(hobbi);
                 textBox_Ujhobbi.Text = "";
                 textBox_Ujhobbi.Focus();
@@ -46,8 +54,6 @@ namespace RegisztracioAlkalmazas_Babusane
 
 
         }
-
-
 
         private void button_Mentes_Click(object sender, EventArgs e)
         {
@@ -79,6 +85,13 @@ namespace RegisztracioAlkalmazas_Babusane
 
             string nem = "";
 
+            if (!radioButton_No.Checked && !radioButton_Ffi.Checked)
+            {
+                MessageBox.Show("Nem választttad ki a nemed.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
 
             if (radioButton_Ffi.Checked)
             {
@@ -91,10 +104,10 @@ namespace RegisztracioAlkalmazas_Babusane
 
             string hobbi = listBox_Hobbi.SelectedItems.ToString();
 
-            Regadatok regadat = new Regadatok(nev, datum, nem, hobbi); 
+            Regadatok regadat = new Regadatok(nev, datum, nem, hobbi);
 
             regadatok.Add(regadat);
-            
+
 
             if (result != DialogResult.OK)
             {
@@ -129,8 +142,6 @@ namespace RegisztracioAlkalmazas_Babusane
                 return;
             }
 
-            textBox_Nev.Clear();
-            listBox_Hobbi.Items.Clear();
 
             try
             {
@@ -145,35 +156,41 @@ namespace RegisztracioAlkalmazas_Babusane
                         string hobbi = sor[3];
                         Regadatok regadat = new Regadatok(nev, szuldatum, nem, hobbi);
                         regadatok.Add(regadat);
+                        adatsor++;
                     }
                     MessageBox.Show("Sikeres beolvasás!");
+
+                    textBox_Nev.Clear();
+
+                    textBox_Nev.Text = regadatok[adatsor].Nev;
+                    dateTimePicker_SzulDatum.Value = regadatok[adatsor].Szuldatum;
+
+                    if (regadatok[adatsor].Nem == "Férfi")
+                    {
+                        radioButton_Ffi.Checked = true;
+                    }
+
+                    if (regadatok[adatsor].Nem == "Nő")
+                    {
+                        radioButton_No.Checked = true;
+                    }
+
+
+                    listBox_Hobbi.Items.Clear();
+                    listBox_Hobbi.Items.Add("Varrás");
+                    listBox_Hobbi.Items.Add("Edzés");
+                    listBox_Hobbi.Items.Add("Olvasás");
+                    listBox_Hobbi.Items.Add(regadatok[adatsor].Hobbi);
                 }
             }
-            //catch (IOException ex)
-            //{
-            //    MessageBox.Show("Hiba a fájl megnyitása során.");
-            //}
-            catch (Exception )
+            catch (IOException ex)
+            {
+                MessageBox.Show("Hiba a fájl megnyitása során.");
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Hiba a fájl feldolgozása közben.");
             }
-
-            textBox_Nev.Text = regadatok[0].Nev;
-            dateTimePicker_SzulDatum.Value = regadatok[0].Szuldatum;
-
-            if (regadatok[0].Nem == "Férfi")
-            {
-                radioButton_Ffi.Checked = true;
-            }
-
-            if (regadatok[0].Nem == "Nő")
-            {
-                radioButton_No.Checked = true;
-            }
-
-            listBox_Hobbi.Items.Add(regadatok[0].Hobbi);
         }
-
-        
     }
 }
