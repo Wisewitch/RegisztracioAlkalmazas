@@ -12,24 +12,16 @@ namespace RegisztracioAlkalmazas_Babusane
         DateTime szuldatum;
         string nem;
         string hobbi;
-
-
+        
+        
         public string Nev { get => nev; set => nev = value; }
-         public DateTime Szuldatum { get => szuldatum; set => szuldatum = value; }
+        
+        public DateTime Szuldatum { get => szuldatum; set => szuldatum = value; }
+        
         public string Nem { get => nem; set => nem = value; }
-        //public DateTime Szuldatum
-        //{
-        //    set
-        //    {
-        //        if (Szuldatum != DateTime.Today)
-        //        {
-        //            Szuldatum = value;
-        //        }
-        //    }
-        //    get { return Szuldatum; }
-        //}
-
+        
         public string Hobbi { get => hobbi; set => hobbi = value; }
+
 
         public Regadatok(string nev, DateTime szuldatum, string nem, string hobbi)
         {
@@ -44,7 +36,5 @@ namespace RegisztracioAlkalmazas_Babusane
         {
             return nev + "; (Született: " + Szuldatum + "); "  + nem + "; " + hobbi;
         }
-
-
     }
 }
