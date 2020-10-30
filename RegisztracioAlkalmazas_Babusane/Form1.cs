@@ -22,13 +22,12 @@ namespace RegisztracioAlkalmazas_Babusane
             dateTimePicker_SzulDatum.CustomFormat = dateTimePicker_SzulDatum.CustomFormat;
         }
 
-        static List<Regadatok> regadatok = new List<Regadatok>();
-     
+        static List<Regadatok> regadatok = new List<Regadatok>();    
 
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-            string hobbi = textBox_Ujhobbi.Text.Trim();
+           string hobbi = textBox_Ujhobbi.Text.Trim();
 
 
             if (listBox_Hobbi.Items.Contains(hobbi))
@@ -38,8 +37,9 @@ namespace RegisztracioAlkalmazas_Babusane
             }
             else
             {
-                
                 listBox_Hobbi.Items.Add(hobbi);
+                textBox_Ujhobbi.Text = "";
+                textBox_Ujhobbi.Focus();
             }
 
         }
@@ -85,7 +85,7 @@ namespace RegisztracioAlkalmazas_Babusane
                 nem = "Nő";
             }
 
-            string hobbi = listBox_Hobbi.SelectedItem.ToString();
+            string hobbi = listBox_Hobbi.SelectedItems.ToString();
 
             Regadatok regadat = new Regadatok(nev, datum, nem, hobbi); 
 
@@ -145,15 +145,15 @@ namespace RegisztracioAlkalmazas_Babusane
                     MessageBox.Show("Sikeres beolvasás!");
                 }
             }
-            catch (IOException ex)
-            {
-                MessageBox.Show("Hiba a fájl megnyitása során.");
-            }
-            catch (Exception ex)
+            //catch (IOException ex)
+            //{
+            //    MessageBox.Show("Hiba a fájl megnyitása során.");
+            //}
+            catch (Exception )
             {
                 MessageBox.Show("Hiba a fájl feldolgozása közben.");
             }
-            
+
             textBox_Nev.Text = regadatok[0].Nev;
             dateTimePicker_SzulDatum.Value = regadatok[0].Szuldatum;
 

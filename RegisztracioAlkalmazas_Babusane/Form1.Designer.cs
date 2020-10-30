@@ -141,6 +141,7 @@
             "Edzés"});
             this.listBox_Hobbi.Location = new System.Drawing.Point(503, 68);
             this.listBox_Hobbi.Name = "listBox_Hobbi";
+            this.listBox_Hobbi.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox_Hobbi.Size = new System.Drawing.Size(162, 124);
             this.listBox_Hobbi.TabIndex = 8;
             // 
@@ -238,7 +239,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker_SzulDatum;
         private System.Windows.Forms.RadioButton radioButton_Ffi;
         private System.Windows.Forms.RadioButton radioButton_No;
-        private System.Windows.Forms.ListBox listBox_Hobbi;
         private System.Windows.Forms.TextBox textBox_Ujhobbi;
         private System.Windows.Forms.Label label_Ujhobbi;
         private System.Windows.Forms.Button button_Add;
@@ -246,6 +246,7 @@
         private System.Windows.Forms.Button button_Betoltes;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.ListBox listBox_Hobbi;
     }
 }
 
