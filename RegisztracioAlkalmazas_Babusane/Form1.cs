@@ -28,16 +28,16 @@ namespace RegisztracioAlkalmazas_Babusane
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-             string ujhobbi = textBox_Ujhobbi.Text.Trim();
+             string hobbi = textBox_Ujhobbi.Text.Trim();
 
 
-            if (listBox_Hobbi.Items.Contains(ujhobbi))
+            if (listBox_Hobbi.Items.Contains(hobbi))
             {
                 MessageBox.Show("Ez a hobbi már szerepel a listában");
             }
             else
             {
-                listBox_Hobbi.Items.Add(ujhobbi);
+                listBox_Hobbi.Items.Add(hobbi);
             }
         }
 
@@ -65,7 +65,7 @@ namespace RegisztracioAlkalmazas_Babusane
 
             if (datum > maidatum)
             {
-                MessageBox.Show("A születési détumod nem lehet a jövöben", "Adatbeviteli hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("A születési dátumod nem lehet a jövöben", "Adatbeviteli hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
