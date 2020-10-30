@@ -23,24 +23,25 @@ namespace RegisztracioAlkalmazas_Babusane
         }
 
         static List<Regadatok> regadatok = new List<Regadatok>();
-
+     
 
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-             string hobbi = textBox_Ujhobbi.Text.Trim();
-
+            string hobbi = textBox_Ujhobbi.Text.Trim();
+           
 
             if (listBox_Hobbi.Items.Contains(hobbi))
             {
                 MessageBox.Show("Ez a hobbi már szerepel a listában");
+
             }
             else
-            {
+            {               
                 listBox_Hobbi.Items.Add(hobbi);
             }
-        }
 
+         }
 
 
         private void button_Mentes_Click(object sender, EventArgs e)
@@ -54,9 +55,7 @@ namespace RegisztracioAlkalmazas_Babusane
                 return;
             }
 
-
             string nev = textBox_Nev.Text.Trim();
-
 
 
             DateTime datum = dateTimePicker_SzulDatum.Value;
@@ -73,7 +72,6 @@ namespace RegisztracioAlkalmazas_Babusane
             }
 
 
-
             string nem = "";
 
 
@@ -88,10 +86,10 @@ namespace RegisztracioAlkalmazas_Babusane
 
             string hobbi = listBox_Hobbi.SelectedItem.ToString();
 
-            Regadatok regadat = new Regadatok(nev, datum, nem, hobbi);
+            Regadatok regadat = new Regadatok(nev, datum, nem, hobbi); 
 
             regadatok.Add(regadat);
-
+            
 
             if (result != DialogResult.OK)
             {
@@ -139,8 +137,8 @@ namespace RegisztracioAlkalmazas_Babusane
                         string nev = sor[0];
                         DateTime szuldatum = Convert.ToDateTime(sor[1]);
                         string nem = sor[2];
-                        string ujhobbi = sor[3];
-                        Regadatok regadat = new Regadatok(nev, szuldatum, nem, ujhobbi);
+                        string hobbi = sor[3];
+                        Regadatok regadat = new Regadatok(nev, szuldatum, nem, hobbi);
                         regadatok.Add(regadat);
                     }
                     MessageBox.Show("Sikeres beolvasás!");

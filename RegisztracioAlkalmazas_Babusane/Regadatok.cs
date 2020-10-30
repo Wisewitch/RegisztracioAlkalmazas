@@ -31,10 +31,12 @@ namespace RegisztracioAlkalmazas_Babusane
             Hobbi = hobbi;
            
         }
-
+        
         public override string ToString()
         {
-            return nev + "; (Született: " + Szuldatum + "); "  + nem + "; " + hobbi;
+            return nev + "; (Született: " + Szuldatum + "); " + nem + "; " + hobbi;
         }
+
+
     }
 }
