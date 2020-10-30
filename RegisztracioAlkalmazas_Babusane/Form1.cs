@@ -11,6 +11,7 @@ using System.IO;
 
 namespace RegisztracioAlkalmazas_Babusane
 {
+    
     public partial class Form1 : Form
     {
         public Form1()
@@ -22,13 +23,13 @@ namespace RegisztracioAlkalmazas_Babusane
             dateTimePicker_SzulDatum.CustomFormat = dateTimePicker_SzulDatum.CustomFormat;
         }
 
-        static List<Regadatok> regadatok = new List<Regadatok>();    
+        static List<Regadatok> regadatok = new List<Regadatok>();
 
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-           string hobbi = textBox_Ujhobbi.Text.Trim();
-
+            string hobbi = textBox_Ujhobbi.Text.Trim();
+            //Regadatok hobbi = new Regadatok(hobbi);
 
             if (listBox_Hobbi.Items.Contains(hobbi))
             {
@@ -37,12 +38,15 @@ namespace RegisztracioAlkalmazas_Babusane
             }
             else
             {
+                MessageBox.Show("Element added");
                 listBox_Hobbi.Items.Add(hobbi);
                 textBox_Ujhobbi.Text = "";
                 textBox_Ujhobbi.Focus();
             }
 
+
         }
+
 
 
         private void button_Mentes_Click(object sender, EventArgs e)
@@ -169,5 +173,7 @@ namespace RegisztracioAlkalmazas_Babusane
 
             listBox_Hobbi.Items.Add(regadatok[0].Hobbi);
         }
+
+        
     }
 }

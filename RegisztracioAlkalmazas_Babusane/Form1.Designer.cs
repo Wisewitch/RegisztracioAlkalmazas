@@ -171,6 +171,7 @@
             this.button_Add.TabIndex = 11;
             this.button_Add.Text = "Hozzáad";
             this.button_Add.UseVisualStyleBackColor = true;
+            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // button_Mentes
             // 
